@@ -32,9 +32,6 @@ RUN ln -s /opt/maven/bin/mvn /usr/local/bin
 RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
 ENV MAVEN_HOME /opt/maven
 
-# install nano
-RUN apt-get install -y nano
-
 #download fuseki server
 RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
 
