@@ -8,8 +8,6 @@
 # extend the most recent long term support Ubuntu version
 FROM ubuntu:14.04
 
-MAINTAINER Stephen L. Reed (http://texai.org, stephenreed@yahoo.com)
-
 # this is a non-interactive automated build - avoid some warning messages
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -33,7 +31,7 @@ RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
 ENV MAVEN_HOME /opt/maven
 
 #download fuseki server
-#RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
+RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
 
 # remove download archive files
 RUN apt-get clean
@@ -55,7 +53,7 @@ ENV PATH $JAVA_HOME/bin:$PATH
 RUN update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 20000 && update-alternatives --install /usr/bin/javac javac $JAVA_HOME/bin/javac 20000
 
 # copy jenkins war file to the container
-ADD http://mirrors.jenkins-ci.org/war/1.574/jenkins.war /opt/jenkins.war
+RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/jenkins.war
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
 
