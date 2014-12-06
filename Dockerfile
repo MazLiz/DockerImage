@@ -61,8 +61,7 @@ ENV JENKINS_HOME /jenkins
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-COPY jenkins.sh /usr/local/bin/jenkins.sh
-ENTRYPOINT ["/usr/local/bin/jenkins.sh"]
+ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
 
 #install plugin (buildresult-trigger) jenkins
 CMD cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
