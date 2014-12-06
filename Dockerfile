@@ -33,7 +33,7 @@ RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
 ENV MAVEN_HOME /opt/maven
 
 #download fuseki server
-RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
+#RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
 
 # remove download archive files
 RUN apt-get clean
@@ -64,4 +64,4 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
 
 #install plugin (buildresult-trigger) jenkins
-#CMD cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
+CMD cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
