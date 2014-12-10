@@ -62,4 +62,4 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
 
 #install plugin (buildresult-trigger) jenkins
-# CMD cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
+RUN cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
