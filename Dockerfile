@@ -57,10 +57,10 @@ RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
 
-#install plugin (buildresult-trigger) jenkins
-RUN cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/
-
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
+
+#install plugin (buildresult-trigger) jenkins
+CMD curl http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ > $JENKINS_HOME/plugins
 
