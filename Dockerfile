@@ -21,7 +21,7 @@ RUN apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
 RUN wget --no-verbose -O /tmp/apache-maven-3.2.2.tar.gz http://archive.apache.org/dist/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
 
 # verify checksum
-# RUN echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.2.2.tar.gz" | md5sum -c
+RUN echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.2.2.tar.gz" | md5sum -c
 
 # install maven
 RUN tar xzf /tmp/apache-maven-3.2.2.tar.gz -C /opt/
@@ -62,4 +62,4 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
 
 #install plugin (buildresult-trigger) jenkins
-CMD cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
+# CMD cd $JENKINS_HOME/plugins && curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
