@@ -1,0 +1,8 @@
+#!/bin/sh
+echo "prova script configurazione"
+fg java -jar opt/jenkins.war
+echo "sleep"
+sleep 10s
+echo "aggiungo plugin"
+cd jenkins/plugins
+curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
