@@ -57,7 +57,7 @@ RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
 
-RUN java -jar /opt/jenkins.war
+RUN java -jar /opt/jenkins.war &
 RUN sleep 10s
 
 ADD http://updates.jenkins-ci.org/download/plugins/buildresult-trigger /jenkins/plugins
