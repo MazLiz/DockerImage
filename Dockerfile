@@ -57,27 +57,13 @@ RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
 
-RUN mkdir jenkins/
-RUN useradd -d /home/jenkins -m -s /bin/bash jenkins
-
-COPY init.groovy /tmp/WEB-INF/init.groovy.d/tcp-slave-angent-port.groovy
-RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o jenkins/jenkins.war \
-  && cd /tmp && zip -g /usr/share/jenkins/jenkins.war WEB-INF/init.groovy.d/tcp-slave-angent-port.groovy && rm -rf /tmp/WEB-INF
-
-ENV JENKINS_HOME /jenkins
-RUN usermod -m -d "$JENKINS_HOME" jenkins && chown -R jenkins "$JENKINS_HOME"
-VOLUME /jenkins
-
 # add plugin
 # RUN mkdir /script
 # ADD https://github.com/MazLiz/DockerImage/plugin_jenkins /script
 
-USER jenkins
-
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-COPY jenkins.sh /local/bin/jenkins.sh
-ENTRYPOINT ["/usr/local/bin/jenkins.sh"]
+ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
 
 #install plugin (buildresult-trigger) jenkins
 #CMD curl http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ > jenkins/plugins
