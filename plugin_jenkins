@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "prova script configurazione"
-fg java -jar opt/jenkins.war
-echo "sleep"
+java -jar opt/jenkins.war &
+echo "sleep 10 sec"
 sleep 10s
 echo "aggiungo plugin"
 cd jenkins/plugins
