@@ -60,7 +60,7 @@ ENV JENKINS_HOME /jenkins
 RUN java -jar /opt/jenkins.war &
 RUN sleep 10s
 
-ADD http://updates.jenkins-ci.org/download/plugins/buildresult-trigger /jenkins/plugins
+#ADD http://updates.jenkins-ci.org/download/plugins/buildresult-trigger /jenkins/plugins
 
 # add plugin
 # RUN mkdir /script
