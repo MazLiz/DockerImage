@@ -5,4 +5,4 @@ echo "sleep 10 sec"
 sleep 10s
 echo "aggiungo plugin"
 cd jenkins/plugins
-curl -O http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ && curl http://localhost:8080/reload
+curl -O https://updates.jenkins-ci.org/latest/buildresult-trigger.hpi && curl http://localhost:8080/reload
