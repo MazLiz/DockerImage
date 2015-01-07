@@ -68,9 +68,7 @@ RUN sleep 10s
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-CMD java -jar /opt/jenkins.war & \
-&& echo ">>>>>>>>>> ciao mamma! /n" \
-&& mkdir prova
+CMD java -jar /opt/jenkins.war & ; echo ">>>>>>>>>> ciao mamma! /n" ; mkdir prova
 
 #install plugin (buildresult-trigger) jenkins
 #CMD curl http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ > jenkins/plugins
