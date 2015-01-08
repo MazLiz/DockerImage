@@ -5,7 +5,7 @@
 # git 1.9.1
 
 # extend the most recent long term support Ubuntu version
-FROM stackbrew/ubuntu:14.04
+FROM ubuntu:14.04
 
 MAINTAINER MazLiz
 
@@ -75,6 +75,6 @@ VOLUME /var/lib/jenkins
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-ENTRYPOINT  ["/bin/bash", "/usr/share/jenkins/jenkins.war"]
+ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
 
 CMD []
