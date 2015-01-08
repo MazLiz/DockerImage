@@ -1,8 +1,12 @@
 #!/bin/sh
 echo "prova script configurazione"
-java -jar opt/jenkins.war &
+#java -jar opt/jenkins.war &
 echo "sleep 20 sec"
 sleep 20s
-echo "aggiungo plugin"
+echo "scarica cli e aggiunge plugin"
+curl -O http://localhost:8080/jnlpJars/jenkins-cli.jar
 cd jenkins/plugins
-curl -O https://updates.jenkins-ci.org/latest/buildresult-trigger.hpi && curl http://localhost:8080/reload
+wget -O https://updates.jenkins-ci.org/latest/buildresult-trigger.hpi
+cd ..
+cd ..
+java -jar jenkins-cli.jar -s http://localhost:8080 restart
