@@ -9,4 +9,3 @@ cd jenkins/plugins
 curl -O http://updates.jenkins-ci.org/latest/buildresult-trigger.hpi
 cd ..
 cd ..
-curl http://localhost:8080/reload
