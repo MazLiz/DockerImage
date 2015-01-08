@@ -1,8 +1,8 @@
 #!/bin/sh
 echo "prova script configurazione"
 java -jar opt/jenkins.war &
-echo "sleep 60 sec"
-sleep 60s
+echo "sleep 180 sec"
+sleep 180s
 echo "scarica cli e aggiunge plugin"
 curl -O http://localhost:8080/jnlpJars/jenkins-cli.jar
 cd jenkins/plugins
