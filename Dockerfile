@@ -66,12 +66,12 @@ RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key a
 RUN echo "deb http://pkg.jenkins-ci.org/debian binary/" > /etc/apt/sources.list.d/jenkins.list
 RUN apt-get update
 RUN apt-get install -y jenkins
-RUN mkdir -p /var/lib/jenkins/plugins
-RUN (cd /var/lib/jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/buildresult-trigger.hpi)
+RUN mkdir -p /jenkins/plugins
+RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/buildresult-trigger.hpi)
 
 ENV JENKINS_HOME /jenkins
 
-VOLUME /var/lib/jenkins
+VOLUME /jenkins
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
