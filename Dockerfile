@@ -33,11 +33,6 @@ ENV MAVEN_HOME /opt/maven
 #download fuseki server
 RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
 
-#download bash script from github
-ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/plugin_jenkins /plugin.sh
-
-RUN chmod 755 /plugin.sh
-
 # remove download archive files
 RUN apt-get clean
 
@@ -61,13 +56,13 @@ RUN update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 20000 &
 RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/jenkins.war
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
+RUN java -jar /opt/jenkins.war &
 
-#ADD http://updates.jenkins-ci.org/download/plugins/buildresult-trigger /jenkins/plugins
+#download bash script from github
+ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/plugin_jenkins /configcli.sh
+RUN chmod 755 /configcli.sh
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-CMD ["/bin/bash", "/plugin.sh"]
-
-#install plugin (buildresult-trigger) jenkins
-#CMD curl http://updates.jenkins-ci.org/download/plugins/buildresult-trigger/ > jenkins/plugins
+CMD ["/bin/bash", "/configcli.sh"]
 
