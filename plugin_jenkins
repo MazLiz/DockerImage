@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "prova script configurazione"
-#java -jar opt/jenkins.war &
+java -jar opt/jenkins.war &
 echo "sleep 20 sec"
 sleep 20s
 echo "scarica cli e aggiunge plugin"
