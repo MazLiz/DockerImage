@@ -6,7 +6,7 @@ sleep 60s
 echo "scarica cli e aggiunge plugin"
 curl -O http://localhost:8080/jnlpJars/jenkins-cli.jar
 cd jenkins/plugins
-wget -O https://updates.jenkins-ci.org/latest/buildresult-trigger.hpi
+curl -O https://updates.jenkins-ci.org/latest/buildresult-trigger.hpi
 cd ..
 cd ..
 java -jar jenkins-cli.jar -s http://localhost:8080 restart
