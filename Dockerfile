@@ -59,9 +59,9 @@ ENV JENKINS_HOME /jenkins
 
 #download bash script from github
 ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/plugin_jenkins /configcli.sh
-RUN chmod 755 /configcli.sh
+RUN chmod 755 /configcli.sh && ./configcli.sh
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-CMD ["/bin/bash", "/configcli.sh"]
+CMD  ["java", "-jar", "/opt/jenkins.war"]
 
