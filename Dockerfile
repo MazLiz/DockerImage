@@ -77,3 +77,4 @@ VOLUME /var/lib/jenkins
 EXPOSE 8080
 ENTRYPOINT  ["/bin/bash", "/usr/share/jenkins/jenkins.war"]
 
+CMD []
