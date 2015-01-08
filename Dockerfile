@@ -56,7 +56,6 @@ RUN update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 20000 &
 RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/jenkins.war
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
-RUN java -jar /opt/jenkins.war &
 
 #download bash script from github
 ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/plugin_jenkins /configcli.sh
