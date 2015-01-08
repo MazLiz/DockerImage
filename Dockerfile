@@ -5,7 +5,7 @@
 # git 1.9.1
 
 # extend the most recent long term support Ubuntu version
-FROM ubuntu:14.04
+FROM stackbrew/ubuntu:14.04
 
 MAINTAINER MazLiz
 
