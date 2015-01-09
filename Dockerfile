@@ -66,7 +66,7 @@ RUN apt-get update
 RUN apt-get install -y jenkins
 RUN mkdir -p /jenkins/plugins
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/buildresult-trigger.hpi)
-RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/github.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git-client.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
 
 
