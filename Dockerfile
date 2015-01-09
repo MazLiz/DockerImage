@@ -33,6 +33,9 @@ ENV MAVEN_HOME /opt/maven
 
 #download fuseki server
 RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
+#create fuseki-dir and start server
+RUN mkdir -p /tmp/fusekidir
+RUN nohup ./fuseki-server --update --port 3030 --loc /tmp/fusekidir /modaclouds/kb >> /tmp/fuseki.log 2>&1 &
 
 # remove download archive files
 RUN apt-get clean
@@ -53,11 +56,6 @@ ENV PATH $JAVA_HOME/bin:$PATH
 # configure symbolic links for the java and javac executables
 RUN update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 20000 && update-alternatives --install /usr/bin/javac javac $JAVA_HOME/bin/javac 20000
 
-# copy jenkins war file to the container
-#RUN curl -L http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -o /opt/jenkins.war
-#RUN chmod 644 /opt/jenkins.war
-#ENV JENKINS_HOME /jenkins
-
 #download bash script from github
 #ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/plugin_jenkins /configcli.sh
 #RUN chmod 755 /configcli.sh
@@ -68,6 +66,9 @@ RUN apt-get update
 RUN apt-get install -y jenkins
 RUN mkdir -p /jenkins/plugins
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/buildresult-trigger.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/github.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
+
 
 ENV JENKINS_HOME /jenkins
 
