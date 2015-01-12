@@ -35,7 +35,7 @@ ENV MAVEN_HOME /opt/maven
 RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
 #create fuseki-dir and start server
 RUN mkdir -p /tmp/fusekidir
-RUN nohup ./fuseki-server --update --port 3030 --loc /tmp/fusekidir /modaclouds/kb >> /tmp/fuseki.log 2>&1 &
+#RUN nohup ./fuseki-server --update --port 3030 --loc /tmp/fusekidir /modaclouds/kb >> /tmp/fuseki.log 2>&1 &
 
 # remove download archive files
 RUN apt-get clean
@@ -69,6 +69,8 @@ RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-c
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git-client.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
 
+COPY ./entrypoint.sh /
+
 
 ENV JENKINS_HOME /jenkins
 
@@ -76,6 +78,7 @@ VOLUME /jenkins
 
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
-ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+#ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+ENTRYPOINT  ["entrypoint.sh"]
 
 CMD []
