@@ -80,8 +80,7 @@ VOLUME /jenkins
 EXPOSE 8080
 
 
-RUN bash -c '/usr/local/bin/entrypoint.sh'
+RUN cd /usr/local/bin && ./entrypoint.sh
 #ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
 
-ENTRYPOINT ["/bin/bash", "-c"]
 
