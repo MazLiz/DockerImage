@@ -80,6 +80,6 @@ VOLUME /jenkins
 EXPOSE 8080
 
 ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
-CMD[]
+CMD []
 
 
