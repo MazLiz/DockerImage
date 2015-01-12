@@ -69,8 +69,8 @@ RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-c
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git-client.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
 
-COPY ./entrypoint.sh /
-
+ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /entrypoint.sh 
+RUN chmod +x /entrypoint.sh
 
 ENV JENKINS_HOME /jenkins
 
