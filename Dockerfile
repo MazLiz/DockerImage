@@ -82,5 +82,5 @@ EXPOSE 8080
 ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod 755 /usr/local/bin/entrypoint.sh
 #ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
-CMD  ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
