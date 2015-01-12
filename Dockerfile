@@ -79,8 +79,7 @@ VOLUME /jenkins
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
 
-
-CMD ["/usr/local/bin/entrypoint.sh"]
-#ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+CMD[]
 
 
