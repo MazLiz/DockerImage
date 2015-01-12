@@ -69,8 +69,8 @@ RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-c
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git-client.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
 
-#ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /entrypoint.sh 
-#RUN chmod +x /entrypoint.sh
+ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/entrypoint.sh
 
 ENV JENKINS_HOME /jenkins
 
@@ -79,9 +79,9 @@ VOLUME /jenkins
 # configure the container to run jenkins, mapping container port 8080 to that host port
 EXPOSE 8080
 
-ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /usr/local/bin/
-RUN chmod 755 /usr/local/bin/entrypoint.sh
+
 RUN bash -c '/usr/local/bin/entrypoint.sh'
 #ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
-#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+ENTRYPOINT ["/bin/bash", "-c"]
 
