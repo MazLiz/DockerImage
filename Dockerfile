@@ -83,4 +83,3 @@ ADD entrypoint.sh /usr/local/bin/entrypoint.sh
 #ENTRYPOINT  ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
 ENTRYPOINT  ["/usr/local/bin/entrypoint.sh"]
 
-CMD[]
