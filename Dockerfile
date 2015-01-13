@@ -69,6 +69,7 @@ RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-c
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git-client.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/github-api.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/scm-api.hpi)
 
 
 ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /usr/local/bin/
