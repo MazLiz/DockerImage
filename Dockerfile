@@ -66,7 +66,12 @@ RUN apt-get install -y jenkins
 RUN mkdir -p /jenkins/plugins
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/buildresult-trigger.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate https://updates.jenkins-ci.org/latest/github.hpi)
-RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate https://updates.jenkins-ci.org/latest/git.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate https://updates.jenkins-ci.org/latest/git-client.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate https://updates.jenkins-ci.org/latest/github-api.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate https://updates.jenkins-ci.org/latest/github-oauth.hpi)
+RUN (cd /jenkins/plugins && wget --no-check-certificate https://updates.jenkins-ci.org/latest/github-sqs-plugin.hpi)
+
 
 ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/entrypoint.sh
