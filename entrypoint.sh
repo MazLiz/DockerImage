@@ -1,7 +1,6 @@
 #! /bin/sh
-cd ..
-cd ..
-cd ..
+echo "Sono nel file sh"
+pwd
 cd /jena-fuseki-1.1.1
 nohup ./fuseki-server --update --port 3030 --loc /tmp/fusekidir /modaclouds/kb > /tmp/fuseki.log 2>&1 &
 
