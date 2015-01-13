@@ -35,6 +35,7 @@ ENV MAVEN_HOME /opt/maven
 RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fuseki-1.1.1-distribution.zip && unzip fuseki.zip && rm fuseki.zip
 #create fuseki-dir and start server
 RUN mkdir -p /tmp/fusekidir
+RUN chmod +x /jena-fuseki-1.1.1/fuseki-server /jena-fuseki-1.1.1/s-*
 #RUN nohup ./fuseki-server --update --port 3030 --loc /tmp/fusekidir /modaclouds/kb >> /tmp/fuseki.log 2>&1 &
 
 # remove download archive files
