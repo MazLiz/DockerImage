@@ -12,6 +12,8 @@ MAINTAINER MazLiz
 # this is a non-interactive automated build - avoid some warning messages
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV HOME /
+
 # update dpkg repositories
 RUN apt-get update 
 
