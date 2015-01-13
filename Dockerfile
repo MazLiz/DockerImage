@@ -79,6 +79,6 @@ VOLUME /jenkins
 EXPOSE 8080
 
 #ENTRYPOINT  ["bin/bash", "/usr/local/bin/entrypoint.sh"]
-CMD ["bin/bash", "/usr/local/bin/entrypoint.sh"]
+CMD ["bin/bash", "/usr/local/bin/entrypoint.sh", "-f"]
 
 
