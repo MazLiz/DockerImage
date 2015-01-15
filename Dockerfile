@@ -38,7 +38,6 @@ RUN wget -qO- -O fuseki.zip http://archive.apache.org/dist/jena/binaries/jena-fu
 #create fuseki-dir and start server
 RUN mkdir -p /tmp/fusekidir
 RUN chmod +x /jena-fuseki-1.1.1/fuseki-server /jena-fuseki-1.1.1/s-*
-#RUN nohup ./fuseki-server --update --port 3030 --loc /tmp/fusekidir /modaclouds/kb >> /tmp/fuseki.log 2>&1 &
 
 # remove download archive files
 RUN apt-get clean
@@ -70,10 +69,11 @@ RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-c
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/git-client.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/github-api.hpi)
 RUN (cd /jenkins/plugins && wget --no-check-certificate http://updates.jenkins-ci.org/latest/scm-api.hpi)
-ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/rules/* /jenkins/workspace/
+#>>>>>>>>>>>>>>>>>possibile???<<<<<<<<<<<<<<<<
+ADD /vagrant/rules /jenkins/workspace/rules
 
-
-ADD https://raw.githubusercontent.com/MazLiz/DockerImage/master/entrypoint.sh /usr/local/bin/
+#>>>>>>>>>>>>>>>>>possibile???<<<<<<<<<<<<<<<<
+ADD /vagrant/entrypoint.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/entrypoint.sh
 
 ENV JENKINS_HOME /jenkins
